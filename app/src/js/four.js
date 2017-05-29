@@ -55,6 +55,7 @@
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      result.textContent = '';
 
       let sentence = textarea.value;
       let words = sentence.split(' ');

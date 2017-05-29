@@ -71,8 +71,8 @@
       <div class="wrap" role="contentinfo">
         <form class="js-letter">
           <div>
-            <label>Digite o Ano:</label>
-            <textarea class="js-letter-user" name="letter" type="text" placeholder="Digite uma frase" required rows="5"></textarea>
+            <label>Digite a frase:</label>
+            <textarea class="js-letter-user" name="phrase" type="text" placeholder="Digite uma frase" required rows="5"></textarea>
           </div>
           <button type="submit">
             Contar Letras
@@ -92,7 +92,22 @@
 
       </h4>
       <div class="wrap" role="contentinfo">
+        <form class="js-exchange">
+          <div>
+            <label>Digite o valor a ser pago:</label>
+            <input class="js-payment-total" name="payment-total" type="text" placeholder="Digite o total" required>
+          </div>
+          <div>
+            <label>Digite o valor que foi pago:</label>
+            <input class="js-payment" name="payment" type="text" placeholder="Digite o valor pago" required>
+          </div>
+          <button type="submit">
+            Calcular Troco
+          </button>
+        </form>
+        <p class="result">
 
+        </p>
       </div>
     </section><!-- /.exercise-five -->
   </main>
@@ -104,5 +119,6 @@
   <script src="src/js/theree.numbers_full.js"></script>
   <script src="src/js/theree.js"></script>
   <script src="src/js/four.js"></script>
+  <script src="src/js/five.js"></script>
 </body>
 </html>
