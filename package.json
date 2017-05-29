@@ -1,0 +1,29 @@
+{
+  "name": "hippo_challenge",
+  "version": "1.0.0",
+  "description": "JavaScript recruiting challenge for startup hippo drs",
+  "main": "index.js",
+  "scripts": {
+    "localhost": "http-server -a localhost -p 8000 -c-1 ./app",
+    "js-watch": "babel-watch .app/src/main.js",
+    "dist": "rm -rf  ./app/dist && mkdir ./app/dist/ && mkdir ./app/dist/js/",
+    "transpile": "babel ./app/src/js --out-file ./app/dist/js/app.js",
+    "build": "npm run dist && npm run transpile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolascbarbosa/hippo_challenge.git"
+  },
+  "author": "nicolascb.claudio@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicolascbarbosa/hippo_challenge/issues"
+  },
+  "homepage": "https://github.com/nicolascbarbosa/hippo_challenge#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "babel-watch": "^2.0.6",
+    "http-server": "^0.10.0"
+  }
+}
