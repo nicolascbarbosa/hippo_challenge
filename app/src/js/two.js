@@ -8,7 +8,7 @@
 
     let checkYear = (year) => ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       result.textContent = '';
