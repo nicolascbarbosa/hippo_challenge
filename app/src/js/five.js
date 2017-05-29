@@ -6,6 +6,8 @@
     const form = doc.querySelector('.js-exchange');
     const inputPayment = doc.querySelector('.js-payment');
     const inputPaymentTotal = doc.querySelector('.js-payment-total');
+    const result = doc.querySelector('.exercise-five > .wrap > .result');
+
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -14,12 +16,11 @@
       let userPayment = parseFloat(inputPayment.value);
 
       if(total >= userPayment) {
-        //o valor pago é menor que o total
         return false;
       }
 
       let exchange = userPayment - total;
-      let textResult = calcExchange(exchange);
+      calcExchange(exchange);
 
     }, true);
 
@@ -39,10 +40,62 @@
         calNotes(current);
       });
 
-      console.log(countNotes);
+      let notes = countNotes.filter(item => item >= 1);
+      let notesMessage = '';
+      let notesMessageInit = '';
+      let notesMessageCall = [];
+      let notesOldVal = 0;
+      let notesCounter = 0;
+      let coins = countNotes.filter(item => item < 1);
+      let coinsMessage = '';
+      let coinsMessageInit = '';
+      let coinsMessageCall = '';
+      let coinsOldVal = 0;
+      let coinsCounter = 0;
 
-      let notes;
-      let coins;
+
+      notes.forEach((current) => {
+        if (current === notesOldVal) {
+          notesCounter++;
+        } else {
+          notesCounter = 1;
+        }
+
+        if(notesMessage.length === 0 || current === notesOldVal && notesMessageCall.length === 0) {
+          notesMessageInit = `Para o troco é necesssario ${notesCounter} notas de R$ ${current}`;
+          notesMessage = notesMessageInit;
+        } else {
+          if(current !== notesOldVal) {
+            notesMessageInit = notesMessage;
+          }
+          notesMessageCall = `, mais ${notesCounter} notas de R$ ${current}`;
+          notesMessage = notesMessageInit.concat(notesMessageCall);
+        }
+        notesOldVal = current;
+      });
+
+      coins.forEach((current) => {
+        if (current === coinsOldVal) {
+          coinsCounter++;
+        } else {
+          coinsCounter = 1;
+        }
+
+        if(coinsMessage.length === 0 || current === coinsOldVal && coinsMessageCall.length === 0) {
+          coinsMessageInit = `, e também ${coinsCounter} moedas de R$ ${current}`;
+          coinsMessage = coinsMessageInit;
+        } else {
+          if(current !== coinsOldVal) {
+            coinsMessageInit = coinsMessage;
+          }
+          coinsMessageCall = `, mais ${coinsCounter} notas de R$ ${current}`;
+          coinsMessage = coinsMessageInit.concat(coinsMessageCall);
+        }
+        coinsOldVal = current;
+      });
+
+      result.appendChild(doc.createTextNode(notesMessage + coinsMessage));
+
     }
   };
 
